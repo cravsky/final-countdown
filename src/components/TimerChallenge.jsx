@@ -4,6 +4,8 @@ import './ResultModal';
 import ResultModal from "./ResultModal";
 
 export default function TimerChallenge({ title, targetTime }) {
+
+    const dialog = useRef();
     const timer = useRef(); // timer is component insant specific
     // ref vs state vs variable
 
@@ -19,6 +21,7 @@ export default function TimerChallenge({ title, targetTime }) {
     function handleStart() {
         timer.current = setTimeout(() => {
             setTimerExpired(true);
+            dialog.current.showModal(); // showModal is a method of dialog element. It is related to html dialog element
         }, targetTime * 1000);
 
         setTimerStarted(true);
@@ -30,7 +33,7 @@ export default function TimerChallenge({ title, targetTime }) {
 
     return (
         <>
-            {timerExpired && <ResultModal targetTime={targetTime} result="lost" />}
+            {<ResultModal ref={dialog} targetTime={targetTime} result="lost" />}
             <section className="challenge">
                 <h2>{title}</h2>
                 <p className="challenge-time">

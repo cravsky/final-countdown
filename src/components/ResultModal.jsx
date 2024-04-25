@@ -1,6 +1,9 @@
-export default function ResultModal({ result, targetTime }) {
+import { forwardRef } from 'react';
+
+
+const ResultModal = forwardRef(function ResultModal({ result, targetTime }, ref) {
     // by default dialog is hidden, open attribute makes it visible
-    return (<dialog className="result-modal" open>
+    return (<dialog ref={ref} className="result-modal">
         <h2>You {result}</h2>
         <p>The target time was:
             <strong>{targetTime} seconds.</strong>
@@ -13,4 +16,6 @@ export default function ResultModal({ result, targetTime }) {
             <button>Close</button>
         </form>
     </dialog>)
-}
+})
+
+export default ResultModal;
