@@ -1,4 +1,5 @@
 import { forwardRef, useImperativeHandle, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 
 const ResultModal = forwardRef(function ResultModal({ remainingTime, targetTime, onReset }, ref) {
@@ -18,7 +19,7 @@ const ResultModal = forwardRef(function ResultModal({ remainingTime, targetTime,
     });
 
     // by default dialog is hidden, open attribute makes it visible
-    return (<dialog
+    return createPortal(<dialog
         ref={dialog}
         className="result-modal"
         // Following handles scenario when user uses ESC key
@@ -36,7 +37,7 @@ const ResultModal = forwardRef(function ResultModal({ remainingTime, targetTime,
         <form method="dialog" onSubmit={onReset}>
             <button>Close</button>
         </form>
-    </dialog>)
+    </dialog>, document.getElementById('modal'))
 })
 
 export default ResultModal;
