@@ -18,7 +18,12 @@ const ResultModal = forwardRef(function ResultModal({ remainingTime, targetTime,
     });
 
     // by default dialog is hidden, open attribute makes it visible
-    return (<dialog ref={dialog} className="result-modal">
+    return (<dialog
+        ref={dialog}
+        className="result-modal"
+        // Following handles scenario when user uses ESC key
+        onClose={onReset} 
+    >
         {userLost && <h2>You lost</h2>}
         {!userLost && <h2>Your score: {score}</h2>}
         <p>The target time was:
