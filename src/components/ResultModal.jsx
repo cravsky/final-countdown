@@ -17,10 +17,10 @@ const ResultModal = forwardRef(function ResultModal({ result, targetTime }, ref)
     return (<dialog ref={dialog} className="result-modal">
         <h2>You {result}</h2>
         <p>The target time was:
-            <strong>{targetTime} seconds.</strong>
+            <strong> {targetTime} seconds.</strong>
         </p>
         <p>You stopped the timer with
-            <strong>X seconds left.</strong>
+            <strong> X seconds left.</strong>
         </p>
         {/* method="dialog" is part of modern HTML */}
         <form method="dialog">
